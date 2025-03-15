@@ -24,23 +24,27 @@ Esta é uma sequência de projetos backend com JavaScript (Node.js), organizados
 - **Descrição**: API que lê e grava dados em arquivos .json usando fs.
 - **Conceitos**: CRUD básico com manipulação de arquivos, persistência de dados sem banco, manipulação de JSON.
 
-### App 6 - Estrutura MVC com Express.js (Em breve)
+### [App 6 - Introdução ao Express.js](./app06/)
+- **Descrição**: Reescrita dos projetos anteriores com Express.js em uma estrutura organizada.
+- **Conceitos**: express.Router(), middleware básico, estrutura de rotas separadas, controladores.
+
+### App 7 - Estrutura MVC com Express.js (Em breve)
 - **Descrição**: Aplicação organizada no padrão MVC (Model-View-Controller).
 - **Conceitos**: Padrão MVC, separação de responsabilidades, roteamento avançado.
 
-### App 7 - Persistência com Banco de Dados (Em breve)
+### App 8 - Persistência com Banco de Dados (Em breve)
 - **Descrição**: Aplicação com persistência de dados usando banco de dados.
 - **Conceitos**: Conexão com banco de dados, operações CRUD, migrations.
 
-### App 8 - Autenticação e Autorização (Em breve)
+### App 9 - Autenticação e Autorização (Em breve)
 - **Descrição**: Sistema de autenticação e autorização de usuários.
 - **Conceitos**: JWT, bcrypt, middleware de autenticação, proteção de rotas.
 
-### App 9 - Upload de Arquivos (Em breve)
+### App 10 - Upload de Arquivos (Em breve)
 - **Descrição**: Sistema para upload e gerenciamento de arquivos.
 - **Conceitos**: Multer, manipulação de arquivos, validação de tipos.
 
-### App 10 - Aplicação Completa (Em breve)
+### App 11 - Aplicação Completa (Em breve)
 - **Descrição**: Aplicação completa integrando todos os conceitos anteriores.
 - **Conceitos**: Arquitetura avançada, boas práticas, performance, segurança.
 
