@@ -32,9 +32,9 @@ Esta é uma sequência de projetos backend com JavaScript (Node.js), organizados
 - **Descrição**: Aplicação completa para gerenciamento de produtos com interface web e API RESTful.
 - **Conceitos**: Arquitetura MVC, frontend com HTML/CSS/JS, Fetch API, validação de dados, persistência em JSON.
 
-### App 8 - Persistência com Banco de Dados (Em breve)
-- **Descrição**: Aplicação com persistência de dados usando banco de dados.
-- **Conceitos**: Conexão com banco de dados, operações CRUD, migrations.
+### [App 8 - API de Tarefas com SQLite](./app08/)
+- **Descrição**: API RESTful para gerenciamento de tarefas com persistência em banco de dados SQLite.
+- **Conceitos**: Banco de dados relacional, operações SQL, relacionamentos 1:N e N:N, migrations, arquitetura MVC.
 
 ### App 9 - Autenticação e Autorização (Em breve)
 - **Descrição**: Sistema de autenticação e autorização de usuários.
