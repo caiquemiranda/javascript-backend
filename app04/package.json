@@ -1,0 +1,27 @@
+{
+  "name": "app04-api-frases-motivacionais",
+  "version": "1.0.0",
+  "description": "API de frases motivacionais com rotas dinâmicas usando Express.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "node",
+    "frases",
+    "motivacionais",
+    "rotas",
+    "dinamicas"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+} 

@@ -16,29 +16,29 @@ Esta é uma sequência de projetos backend com JavaScript (Node.js), organizados
 - **Descrição**: Servidor web usando Express.js com API REST para gerenciamento de tarefas.
 - **Conceitos**: Express.js, middlewares, API REST, integração frontend-backend.
 
-### App 4 - Estrutura MVC com Express.js (Em breve)
-- **Descrição**: Aplicação organizada no padrão MVC (Model-View-Controller).
-- **Conceitos**: Organização de código, separação de responsabilidades, roteamento avançado.
+### [App 4 - API de Frases com Rotas Dinâmicas](./app04/)
+- **Descrição**: API RESTful para gerenciar frases motivacionais com rotas dinâmicas.
+- **Conceitos**: Organização de código, separação de responsabilidades, manipulação de dados em memória.
 
-### App 5 - Persistência com Banco de Dados (Em breve)
+### App 5 - Estrutura MVC com Express.js (Em breve)
+- **Descrição**: Aplicação organizada no padrão MVC (Model-View-Controller).
+- **Conceitos**: Padrão MVC, separação de responsabilidades, roteamento avançado.
+
+### App 6 - Persistência com Banco de Dados (Em breve)
 - **Descrição**: Aplicação com persistência de dados usando banco de dados.
 - **Conceitos**: Conexão com banco de dados, operações CRUD, migrations.
 
-### App 6 - Autenticação e Autorização (Em breve)
+### App 7 - Autenticação e Autorização (Em breve)
 - **Descrição**: Sistema de autenticação e autorização de usuários.
 - **Conceitos**: JWT, bcrypt, middleware de autenticação, proteção de rotas.
 
-### App 7 - Upload de Arquivos (Em breve)
+### App 8 - Upload de Arquivos (Em breve)
 - **Descrição**: Sistema para upload e gerenciamento de arquivos.
 - **Conceitos**: Multer, manipulação de arquivos, validação de tipos.
 
-### App 8 - API com Documentação (Em breve)
+### App 9 - API com Documentação (Em breve)
 - **Descrição**: API REST com documentação automática.
 - **Conceitos**: Swagger/OpenAPI, validação de dados, padronização de respostas.
-
-### App 9 - Testes Automatizados (Em breve)
-- **Descrição**: Aplicação com testes unitários e de integração.
-- **Conceitos**: Jest, Supertest, TDD, cobertura de código.
 
 ### App 10 - Aplicação Completa (Em breve)
 - **Descrição**: Aplicação completa integrando todos os conceitos anteriores.
