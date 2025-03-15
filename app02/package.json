@@ -1,0 +1,22 @@
+{
+  "name": "app02-servidor-com-leitura-arquivos",
+  "version": "1.0.0",
+  "description": "Servidor HTTP com leitura de arquivos e conteúdo estático",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "node",
+    "http",
+    "filesystem",
+    "fs",
+    "arquivo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+} 

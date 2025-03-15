@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="/arquivos">Arquivos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content">
+            <h1>Bem-vindo ao Servidor com Leitura de Arquivos</h1>
+            <p>Este é um exemplo de servidor HTTP que lê arquivos do sistema de arquivos e os serve como páginas web.
+            </p>
+            <p>Características deste projeto:</p>
+            <ul>
+                <li>Utilizamos o módulo <code>fs</code> do Node.js para ler arquivos</li>
+                <li>Implementamos rotas para diferentes páginas</li>
+                <li>Servimos arquivos estáticos baseados em suas extensões</li>
+                <li>Tratamos erros e fornecemos páginas de erro personalizadas</li>
+            </ul>
+            <p>Explore as diferentes páginas através do menu acima!</p>
+        </div>
+
+        <footer>
+            <p>App 2 - Servidor com Leitura de Arquivos &copy; 2023</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Projeto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="/arquivos">Arquivos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content">
+            <h1>Sobre o Projeto</h1>
+
+            <h2>Objetivo</h2>
+            <p>Este projeto demonstra como criar um servidor HTTP em Node.js que pode ler e servir arquivos do sistema
+                de arquivos local. É uma evolução do conceito de servidor básico, adicionando a capacidade de gerenciar
+                conteúdo estático.</p>
+
+            <h2>Recursos Técnicos</h2>
+            <p>Este projeto utiliza os seguintes módulos nativos do Node.js:</p>
+            <ul>
+                <li><strong>http</strong>: Para criar o servidor web</li>
+                <li><strong>fs</strong>: Para leitura e manipulação de arquivos</li>
+                <li><strong>path</strong>: Para manipulação de caminhos de arquivo</li>
+            </ul>
+
+            <h2>Exemplos de Código</h2>
+            <p>Aqui está um exemplo de como lemos arquivos de forma assíncrona:</p>
+            <pre class="code-block">
+function lerArquivo(caminhoArquivo) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(caminhoArquivo, 'utf8', (err, conteudo) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve(conteudo);
+    });
+  });
+}</pre>
+
+            <h2>Próximos Passos</h2>
+            <p>Alguns aprimoramentos possíveis incluem:</p>
+            <ul>
+                <li>Implementação de cache para arquivos estáticos</li>
+                <li>Compressão de arquivos para melhorar a performance</li>
+                <li>Sistema de roteamento mais avançado</li>
+                <li>Suporte para uploads de arquivos</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>App 2 - Servidor com Leitura de Arquivos &copy; 2023</p>
+        </footer>
+    </div>
+</body>
+
+</html>

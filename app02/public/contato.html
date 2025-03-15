@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="/arquivos">Arquivos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content">
+            <h1>Entre em Contato</h1>
+
+            <p>Preencha o formulário abaixo para enviar uma mensagem. <strong>Observação:</strong> como este é um
+                exemplo educacional, o formulário não fará o envio real dos dados.</p>
+
+            <form id="contato-form">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="assunto">Assunto:</label>
+                    <input type="text" id="assunto" name="assunto" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" required></textarea>
+                </div>
+
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+
+            <div id="mensagem-enviada"
+                style="display: none; margin-top: 20px; padding: 10px; background-color: #dff0d8; color: #3c763d; border-radius: 4px;">
+                Mensagem enviada com sucesso! (Simulação)
+            </div>
+        </div>
+
+        <footer>
+            <p>App 2 - Servidor com Leitura de Arquivos &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        // Script para simular o envio do formulário
+        document.getElementById('contato-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Simula processamento
+            setTimeout(function () {
+                // Limpa o formulário
+                document.getElementById('contato-form').reset();
+
+                // Mostra mensagem de sucesso
+                document.getElementById('mensagem-enviada').style.display = 'block';
+
+                // Esconde a mensagem após 3 segundos
+                setTimeout(function () {
+                    document.getElementById('mensagem-enviada').style.display = 'none';
+                }, 3000);
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>
