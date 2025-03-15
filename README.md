@@ -20,25 +20,25 @@ Esta é uma sequência de projetos backend com JavaScript (Node.js), organizados
 - **Descrição**: API RESTful para gerenciar frases motivacionais com rotas dinâmicas.
 - **Conceitos**: Organização de código, separação de responsabilidades, manipulação de dados em memória.
 
-### App 5 - Estrutura MVC com Express.js (Em breve)
+### [App 5 - Leitura e Escrita de Arquivos com Node.js (fs)](./app05/)
+- **Descrição**: API que lê e grava dados em arquivos .json usando fs.
+- **Conceitos**: CRUD básico com manipulação de arquivos, persistência de dados sem banco, manipulação de JSON.
+
+### App 6 - Estrutura MVC com Express.js (Em breve)
 - **Descrição**: Aplicação organizada no padrão MVC (Model-View-Controller).
 - **Conceitos**: Padrão MVC, separação de responsabilidades, roteamento avançado.
 
-### App 6 - Persistência com Banco de Dados (Em breve)
+### App 7 - Persistência com Banco de Dados (Em breve)
 - **Descrição**: Aplicação com persistência de dados usando banco de dados.
 - **Conceitos**: Conexão com banco de dados, operações CRUD, migrations.
 
-### App 7 - Autenticação e Autorização (Em breve)
+### App 8 - Autenticação e Autorização (Em breve)
 - **Descrição**: Sistema de autenticação e autorização de usuários.
 - **Conceitos**: JWT, bcrypt, middleware de autenticação, proteção de rotas.
 
-### App 8 - Upload de Arquivos (Em breve)
+### App 9 - Upload de Arquivos (Em breve)
 - **Descrição**: Sistema para upload e gerenciamento de arquivos.
 - **Conceitos**: Multer, manipulação de arquivos, validação de tipos.
-
-### App 9 - API com Documentação (Em breve)
-- **Descrição**: API REST com documentação automática.
-- **Conceitos**: Swagger/OpenAPI, validação de dados, padronização de respostas.
 
 ### App 10 - Aplicação Completa (Em breve)
 - **Descrição**: Aplicação completa integrando todos os conceitos anteriores.
