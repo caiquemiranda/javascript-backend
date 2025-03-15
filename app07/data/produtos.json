@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "nome": "Smartphone Galaxy S21",
+        "descricao": "Smartphone Samsung Galaxy S21 com 128GB de armazenamento, 8GB de RAM e câmera de 64MP",
+        "preco": 3499.99,
+        "estoque": 15,
+        "categoria": "Eletrônicos",
+        "dataCriacao": "2023-06-10T14:30:00.000Z"
+    },
+    {
+        "id": 2,
+        "nome": "Notebook Dell Inspiron",
+        "descricao": "Notebook Dell Inspiron com processador Intel Core i5, 8GB de RAM e SSD de 256GB",
+        "preco": 4299.90,
+        "estoque": 8,
+        "categoria": "Informática",
+        "dataCriacao": "2023-06-11T10:15:00.000Z"
+    },
+    {
+        "id": 3,
+        "nome": "Smart TV LG 50\"",
+        "descricao": "Smart TV LG 50 polegadas 4K com HDR e sistema webOS",
+        "preco": 2899.00,
+        "estoque": 12,
+        "categoria": "Eletrônicos",
+        "dataCriacao": "2023-06-12T16:45:00.000Z"
+    },
+    {
+        "id": 4,
+        "nome": "Fone de Ouvido JBL",
+        "descricao": "Fone de ouvido JBL Bluetooth com cancelamento de ruído",
+        "preco": 299.90,
+        "estoque": 30,
+        "categoria": "Acessórios",
+        "dataCriacao": "2023-06-13T09:20:00.000Z"
+    },
+    {
+        "id": 5,
+        "nome": "Mouse Gamer Logitech",
+        "descricao": "Mouse gamer Logitech com 16000 DPI e 11 botões programáveis",
+        "preco": 349.90,
+        "estoque": 20,
+        "categoria": "Periféricos",
+        "dataCriacao": "2023-06-14T11:30:00.000Z"
+    }
+]

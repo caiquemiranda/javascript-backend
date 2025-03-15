@@ -28,9 +28,9 @@ Esta é uma sequência de projetos backend com JavaScript (Node.js), organizados
 - **Descrição**: Reescrita dos projetos anteriores com Express.js em uma estrutura organizada.
 - **Conceitos**: express.Router(), middleware básico, estrutura de rotas separadas, controladores.
 
-### App 7 - Estrutura MVC com Express.js (Em breve)
-- **Descrição**: Aplicação organizada no padrão MVC (Model-View-Controller).
-- **Conceitos**: Padrão MVC, separação de responsabilidades, roteamento avançado.
+### [App 7 - Gerenciador de Produtos com Interface Web](./app07/)
+- **Descrição**: Aplicação completa para gerenciamento de produtos com interface web e API RESTful.
+- **Conceitos**: Arquitetura MVC, frontend com HTML/CSS/JS, Fetch API, validação de dados, persistência em JSON.
 
 ### App 8 - Persistência com Banco de Dados (Em breve)
 - **Descrição**: Aplicação com persistência de dados usando banco de dados.
