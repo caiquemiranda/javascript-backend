@@ -15,6 +15,10 @@ const { testConnection } = require('./database');
 const { handleSequelizeError, handleError } = require('./middlewares/errorHandler');
 const appConfig = require('./config/app');
 const logger = require('./utils/logger');
+const { initialize } = require('./utils/init');
+
+// Inicializar aplicação
+initialize();
 
 // Criar aplicação Express
 const app = express();
@@ -28,6 +32,9 @@ app.use(cors(appConfig.cors));
 // Parser para JSON e URL encoded
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Servir arquivos estáticos da pasta public
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Configuração de logs HTTP
 if (appConfig.env === 'production') {

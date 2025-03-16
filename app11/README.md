@@ -1,31 +1,36 @@
-# API REST com PostgreSQL e Estrutura MVC
+# API REST com PostgreSQL e JWT
 
-API RESTful de gerenciamento de usuários utilizando PostgreSQL, Sequelize ORM e arquitetura MVC.
+API REST desenvolvida com Node.js, Express, PostgreSQL e autenticação JWT, seguindo padrões MVC e boas práticas de desenvolvimento.
 
-## Funcionalidades
+## Características
 
-- Registro e autenticação de usuários com JWT
-- CRUD completo de usuários
-- Proteção de rotas com middleware de autenticação
-- Validação de dados com express-validator
-- Logs estruturados com Winston
-- Documentação de API com Swagger
+- Autenticação e autorização com JWT
+- Validação de dados com Express Validator
+- ORM com Sequelize
+- Documentação da API disponível
+- Logging abrangente com Winston
+- Tratamento centralizado de erros
+- Migrations e Seeders para o banco de dados
+- Criptografia de senhas com bcrypt
+- Middlewares para controle de acesso
 
-## Pré-requisitos
+## Requisitos
 
-- Node.js (v14+)
-- PostgreSQL (v12+)
-- npm ou yarn
+- Node.js 14+
+- PostgreSQL 12+
+- NPM ou Yarn
 
 ## Instalação
 
 1. Clone o repositório:
+
 ```bash
-git clone https://github.com/seu-usuario/javascript-backend.git
-cd javascript-backend/app11
+git clone [URL_DO_REPOSITÓRIO]
+cd [NOME_DA_PASTA]
 ```
 
 2. Instale as dependências:
+
 ```bash
 npm install
 # ou
@@ -33,90 +38,96 @@ yarn install
 ```
 
 3. Configure as variáveis de ambiente:
+
 ```bash
 cp .env.example .env
 # Edite o arquivo .env com suas configurações
 ```
 
-4. Configure o banco de dados:
+4. Execute as migrations do banco de dados:
+
 ```bash
-# Crie o banco de dados
-createdb api_users
-
-# Execute as migrações
 npm run migrate
-
-# Execute as seeds (opcional)
-npm run seed
+# ou
+yarn migrate
 ```
 
-5. Inicie o servidor:
+5. Execute o seeder para criar o usuário administrador:
+
+```bash
+npm run seed
+# ou
+yarn seed
+```
+
+## Executando o Projeto
+
+### Ambiente de Desenvolvimento
+
 ```bash
 npm run dev
+# ou
+yarn dev
 ```
 
-6. Acesse a API:
-```
-http://localhost:3000/api
+### Ambiente de Produção
+
+```bash
+npm start
+# ou
+yarn start
 ```
 
-## Estrutura do Projeto
+## Documentação da API
 
-```
-app11/
-├── src/
-│   ├── controllers/    # Controladores para lógica de requisições
-│   ├── models/         # Modelos para interação com o banco de dados
-│   ├── routes/         # Definição de rotas da API
-│   ├── middleware/     # Middlewares (JWT, validação, etc.)
-│   ├── services/       # Camada de serviços para lógica de negócios
-│   ├── utils/          # Funções utilitárias
-│   ├── config/         # Configurações da aplicação
-│   └── database/       # Arquivos relacionados ao banco de dados
-│       ├── migrations/ # Migrações para estrutura do banco
-│       └── seeds/      # Seeds para dados iniciais
-├── tests/              # Testes automatizados
-└── public/             # Arquivos estáticos (documentação, etc.)
-```
+A documentação da API está disponível em:
 
-## API Endpoints
+- Local: http://localhost:3000/api
+
+## Usuário Administrador Padrão
+
+Após executar o seeder, um usuário administrador será criado com as seguintes credenciais:
+
+- Email: admin@example.com
+- Senha: Admin@123
+
+## Endpoints Principais
 
 ### Autenticação
 
-- **POST /api/auth/register** - Registrar novo usuário
-- **POST /api/auth/login** - Autenticar usuário
-- **GET /api/auth/profile** - Obter perfil do usuário autenticado
-- **POST /api/auth/refresh** - Renovar token JWT
+- `POST /api/auth/register` - Registrar novo usuário
+- `POST /api/auth/login` - Autenticar usuário
+- `GET /api/auth/profile` - Obter perfil do usuário autenticado
+- `POST /api/auth/refresh` - Renovar token JWT
 
-### Usuários (requer autenticação)
+### Usuários
 
-- **GET /api/users** - Listar todos os usuários
-- **GET /api/users/:id** - Obter usuário por ID
-- **PUT /api/users/:id** - Atualizar usuário
-- **DELETE /api/users/:id** - Remover usuário
+- `GET /api/users` - Listar todos os usuários (admin)
+- `GET /api/users/:id` - Obter usuário por ID
+- `PUT /api/users/:id` - Atualizar usuário
+- `DELETE /api/users/:id` - Excluir usuário
+- `PUT /api/users/:id/password` - Alterar senha
 
-## Tecnologias Utilizadas
+## Scripts Disponíveis
 
-- **Express.js**: Framework web para Node.js
-- **Sequelize**: ORM para PostgreSQL
-- **PostgreSQL**: Banco de dados relacional
-- **JWT**: Autenticação e autorização
-- **Winston**: Logging estruturado
-- **Express Validator**: Validação de dados
-- **Helmet**: Segurança para cabeçalhos HTTP
-- **Jest**: Framework de testes
+- `npm start` - Inicia o servidor em produção
+- `npm run dev` - Inicia o servidor em desenvolvimento com hot-reload
+- `npm run migrate` - Executa as migrations
+- `npm run migrate:undo` - Desfaz a última migration
+- `npm run migrate:undo:all` - Desfaz todas as migrations
+- `npm run seed` - Executa os seeders
+- `npm run seed:undo` - Desfaz o último seeder
+- `npm run seed:undo:all` - Desfaz todos os seeders
+- `npm test` - Executa os testes
 
-## Conceitos Aplicados
+## Contribuindo
 
-- Arquitetura MVC (Model-View-Controller)
-- Autenticação e autorização com JWT
-- Relacionamentos em banco de dados relacional
-- Validação de dados de entrada
-- Tratamento de erros centralizado
-- Logging estruturado
-- Testes automatizados
-- Boas práticas de segurança
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Faça commit das suas alterações (`git commit -m 'Adiciona nova feature'`)
+4. Faça push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
 
 ## Licença
 
-Este projeto é para fins educacionais. 
+Este projeto está licenciado sob a licença [ISC](LICENSE). 
