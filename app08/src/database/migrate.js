@@ -1,98 +1,94 @@
 /**
- * Script de migração para criar as tabelas no banco de dados SQLite
+ * Script para criar as tabelas do banco de dados
  */
-const db = require('../config/database');
 const fs = require('fs');
 const path = require('path');
+const db = require('./connection');
 
-// Função para executar cada migração em ordem
-const runMigrations = async () => {
-    console.log('Iniciando migrações do banco de dados...');
-
-    // Cria a tabela de categorias se não existir
-    const createCategoriesTable = `
-        CREATE TABLE IF NOT EXISTS categorias (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL UNIQUE,
-            descricao TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    `;
-
-    // Cria a tabela de tarefas se não existir
-    const createTasksTable = `
-        CREATE TABLE IF NOT EXISTS tarefas (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            titulo TEXT NOT NULL,
-            descricao TEXT,
-            concluida INTEGER DEFAULT 0,
-            data_vencimento TEXT,
-            prioridade INTEGER DEFAULT 1,
-            categoria_id INTEGER,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (categoria_id) REFERENCES categorias (id)
-              ON DELETE SET NULL ON UPDATE CASCADE
-        )
-    `;
-
-    // Cria a tabela de etiquetas se não existir
-    const createTagsTable = `
-        CREATE TABLE IF NOT EXISTS etiquetas (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL UNIQUE,
-            cor TEXT DEFAULT '#3498db',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    `;
-
-    // Cria a tabela de relacionamento entre tarefas e etiquetas
-    const createTaskTagsTable = `
-        CREATE TABLE IF NOT EXISTS tarefa_etiquetas (
-            tarefa_id INTEGER NOT NULL,
-            etiqueta_id INTEGER NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            PRIMARY KEY (tarefa_id, etiqueta_id),
-            FOREIGN KEY (tarefa_id) REFERENCES tarefas (id) 
-              ON DELETE CASCADE ON UPDATE CASCADE,
-            FOREIGN KEY (etiqueta_id) REFERENCES etiquetas (id)
-              ON DELETE CASCADE ON UPDATE CASCADE
-        )
-    `;
-
-    // Função para executar cada migração em ordem
-    const runMigration = (query, name) => {
-        return new Promise((resolve, reject) => {
-            console.log(`Executando migração: ${name}...`);
-            db.run(query, (err) => {
-                if (err) {
-                    console.error(`Erro na migração ${name}:`, err.message);
-                    reject(err);
-                } else {
-                    console.log(`Migração ${name} concluída com sucesso.`);
-                    resolve();
-                }
-            });
-        });
-    };
-
+const migrate = async () => {
     try {
-        // Executa as migrações em ordem
-        await runMigration(createCategoriesTable, 'categorias');
-        await runMigration(createTasksTable, 'tarefas');
-        await runMigration(createTagsTable, 'etiquetas');
-        await runMigration(createTaskTagsTable, 'tarefa_etiquetas');
+        console.log('Iniciando migração do banco de dados...');
 
-        console.log('Todas as migrações foram concluídas com sucesso!');
+        // Garantir que o diretório data existe
+        const dataDir = path.resolve(__dirname, '../../data');
+        if (!fs.existsSync(dataDir)) {
+            fs.mkdirSync(dataDir, { recursive: true });
+            console.log('Diretório data criado com sucesso.');
+        }
+
+        // Iniciar transação
+        await db.beginTransaction();
+
+        // Criar tabela de categorias
+        await db.exec(`
+      CREATE TABLE IF NOT EXISTS categories (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL UNIQUE,
+        description TEXT,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      )
+    `);
+        console.log('Tabela categories criada com sucesso.');
+
+        // Criar tabela de tarefas
+        await db.exec(`
+      CREATE TABLE IF NOT EXISTS tasks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        description TEXT,
+        due_date TEXT,
+        priority TEXT NOT NULL,
+        status TEXT NOT NULL,
+        category_id INTEGER,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL,
+        FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE SET NULL
+      )
+    `);
+        console.log('Tabela tasks criada com sucesso.');
+
+        // Criar tabela de etiquetas
+        await db.exec(`
+      CREATE TABLE IF NOT EXISTS labels (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL UNIQUE,
+        color TEXT NOT NULL,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      )
+    `);
+        console.log('Tabela labels criada com sucesso.');
+
+        // Criar tabela de relacionamento entre tarefas e etiquetas
+        await db.exec(`
+      CREATE TABLE IF NOT EXISTS task_labels (
+        task_id INTEGER NOT NULL,
+        label_id INTEGER NOT NULL,
+        PRIMARY KEY (task_id, label_id),
+        FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE,
+        FOREIGN KEY (label_id) REFERENCES labels (id) ON DELETE CASCADE
+      )
+    `);
+        console.log('Tabela task_labels criada com sucesso.');
+
+        // Confirmar transação
+        await db.commit();
+
+        console.log('Migração concluída com sucesso!');
     } catch (error) {
-        console.error('Erro ao executar migrações:', error.message);
-        process.exit(1);
+        // Reverter transação em caso de erro
+        await db.rollback();
+        console.error('Erro durante a migração:', error.message);
+        throw error;
     } finally {
-        // Fecha a conexão com o banco de dados
-        db.close();
+        // Fechar conexão com o banco de dados
+        await db.close();
     }
 };
 
-// Executa as migrações
-runMigrations(); 
+// Executar migração
+migrate().catch(error => {
+    console.error('Falha na migração:', error);
+    process.exit(1);
+}); 
