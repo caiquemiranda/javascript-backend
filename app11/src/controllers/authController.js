@@ -1,7 +1,5 @@
-const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
-const { models } = require('../database');
-const config = require('../config/app');
+const authService = require('../services/authService');
 const logger = require('../utils/logger');
 
 /**
@@ -23,44 +21,12 @@ const authController = {
                 });
             }
 
-            const { name, email, password } = req.body;
+            const result = await authService.register(req.body);
 
-            // Verificar se o usuário já existe
-            const existingUser = await models.User.findOne({ where: { email } });
-            if (existingUser) {
-                return res.status(400).json({
-                    success: false,
-                    message: 'Este email já está registrado'
-                });
-            }
-
-            // Criar novo usuário
-            const user = await models.User.create({
-                name,
-                email,
-                password,
-                role: 'user' // Por padrão, todos os novos registros são usuários normais
-            });
-
-            // Gerar token JWT
-            const token = jwt.sign(
-                {
-                    id: user.id,
-                    email: user.email,
-                    role: user.role
-                },
-                config.jwt.secret,
-                { expiresIn: config.jwt.expiresIn }
-            );
-
-            // Responder com dados do usuário e token
             res.status(201).json({
                 success: true,
                 message: 'Usuário registrado com sucesso',
-                data: {
-                    user: user.toJSON(),
-                    token
-                }
+                data: result
             });
         } catch (error) {
             logger.error('Erro ao registrar usuário:', error);
@@ -84,56 +50,12 @@ const authController = {
             }
 
             const { email, password } = req.body;
+            const result = await authService.login(email, password);
 
-            // Buscar o usuário pelo email
-            const user = await models.User.findOne({ where: { email } });
-            if (!user) {
-                return res.status(401).json({
-                    success: false,
-                    message: 'Credenciais inválidas'
-                });
-            }
-
-            // Verificar se o usuário está ativo
-            if (!user.active) {
-                return res.status(401).json({
-                    success: false,
-                    message: 'Conta desativada. Entre em contato com o administrador'
-                });
-            }
-
-            // Verificar a senha
-            const isPasswordValid = await user.checkPassword(password);
-            if (!isPasswordValid) {
-                return res.status(401).json({
-                    success: false,
-                    message: 'Credenciais inválidas'
-                });
-            }
-
-            // Atualizar último login
-            user.last_login = new Date();
-            await user.save();
-
-            // Gerar token JWT
-            const token = jwt.sign(
-                {
-                    id: user.id,
-                    email: user.email,
-                    role: user.role
-                },
-                config.jwt.secret,
-                { expiresIn: config.jwt.expiresIn }
-            );
-
-            // Responder com dados do usuário e token
             res.json({
                 success: true,
                 message: 'Login realizado com sucesso',
-                data: {
-                    user: user.toJSON(),
-                    token
-                }
+                data: result
             });
         } catch (error) {
             logger.error('Erro no login:', error);
@@ -147,21 +69,11 @@ const authController = {
      */
     getProfile: async (req, res, next) => {
         try {
-            // req.user.id é definido pelo middleware de autenticação
-            const user = await models.User.findByPk(req.user.id);
-
-            if (!user) {
-                return res.status(404).json({
-                    success: false,
-                    message: 'Usuário não encontrado'
-                });
-            }
+            const user = await authService.getProfile(req.user.id);
 
             res.json({
                 success: true,
-                data: {
-                    user: user.toJSON()
-                }
+                data: { user }
             });
         } catch (error) {
             logger.error('Erro ao obter perfil:', error);
@@ -174,21 +86,18 @@ const authController = {
      * @route POST /api/auth/refresh
      */
     refreshToken: (req, res) => {
-        // O usuário já está autenticado pelo middleware de autenticação
-        const { id, email, role } = req.user;
+        try {
+            const token = authService.refreshToken(req.user);
 
-        // Gerar novo token
-        const token = jwt.sign(
-            { id, email, role },
-            config.jwt.secret,
-            { expiresIn: config.jwt.expiresIn }
-        );
-
-        res.json({
-            success: true,
-            message: 'Token renovado com sucesso',
-            data: { token }
-        });
+            res.json({
+                success: true,
+                message: 'Token renovado com sucesso',
+                data: { token }
+            });
+        } catch (error) {
+            logger.error('Erro ao renovar token:', error);
+            next(error);
+        }
     }
 };
 

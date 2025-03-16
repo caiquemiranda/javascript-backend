@@ -1,24 +1,19 @@
 const express = require('express');
-const authRoutes = require('./authRoutes');
-const userRoutes = require('./userRoutes');
-const { notFoundHandler } = require('../middleware/errorMiddleware');
-
 const router = express.Router();
+const authRoutes = require('./auth');
+const userRoutes = require('./users');
+const { handleNotFound } = require('../middlewares/errorHandler');
 
 /**
- * @route   GET /api
- * @desc    Informações da API
- * @access  Público
+ * Rotas da API
  */
+
+// Rota raiz
 router.get('/', (req, res) => {
     res.json({
         success: true,
-        message: 'API REST com PostgreSQL e Arquitetura MVC',
-        version: '1.0.0',
-        endpoints: {
-            auth: '/api/auth',
-            users: '/api/users'
-        }
+        message: 'API REST com PostgreSQL',
+        version: '1.0.0'
     });
 });
 
@@ -28,7 +23,7 @@ router.use('/auth', authRoutes);
 // Rotas de usuários
 router.use('/users', userRoutes);
 
-// Middleware para rotas não encontradas
-router.use(notFoundHandler);
+// Rota 404 para endpoints não encontrados
+router.use(handleNotFound);
 
 module.exports = router; 
