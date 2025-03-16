@@ -36,9 +36,9 @@ Esta é uma sequência de projetos backend com JavaScript (Node.js), organizados
 - **Descrição**: API RESTful para gerenciamento de tarefas com persistência em banco de dados SQLite.
 - **Conceitos**: Banco de dados relacional, operações SQL, relacionamentos 1:N e N:N, migrations, arquitetura MVC.
 
-### App 9 - Autenticação e Autorização (Em breve)
-- **Descrição**: Sistema de autenticação e autorização de usuários.
-- **Conceitos**: JWT, bcrypt, middleware de autenticação, proteção de rotas.
+### [App 9 - API com Autenticação JWT](./app09/)
+- **Descrição**: Sistema de autenticação e autorização de usuários com JWT e persistência em SQLite.
+- **Conceitos**: JWT, bcrypt, middleware de autenticação, proteção de rotas, controle de acesso baseado em funções.
 
 ### App 10 - Upload de Arquivos (Em breve)
 - **Descrição**: Sistema para upload e gerenciamento de arquivos.
