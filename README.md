@@ -40,9 +40,9 @@ Esta é uma sequência de projetos backend com JavaScript (Node.js), organizados
 - **Descrição**: Sistema de autenticação e autorização de usuários com JWT e persistência em SQLite.
 - **Conceitos**: JWT, bcrypt, middleware de autenticação, proteção de rotas, controle de acesso baseado em funções.
 
-### App 10 - Upload de Arquivos (Em breve)
-- **Descrição**: Sistema para upload e gerenciamento de arquivos.
-- **Conceitos**: Multer, manipulação de arquivos, validação de tipos.
+### [App 10 - Upload de Arquivos com Multer](./app10/)
+- **Descrição**: Sistema para upload e gerenciamento de imagens e documentos com interface web.
+- **Conceitos**: Multer, manipulação de arquivos, validação de tipos, armazenamento em disco, streaming de arquivos.
 
 ### App 11 - Aplicação Completa (Em breve)
 - **Descrição**: Aplicação completa integrando todos os conceitos anteriores.

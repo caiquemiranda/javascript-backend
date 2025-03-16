@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Arquivos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-file-upload"></i> Gerenciador de Arquivos</h1>
+            <p>Upload e gerenciamento de imagens e documentos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Navegação por abas -->
+        <div class="tabs">
+            <button class="tab-btn active" data-target="upload-section">
+                <i class="fas fa-upload"></i> Upload
+            </button>
+            <button class="tab-btn" data-target="file-list">
+                <i class="fas fa-list"></i> Arquivos
+            </button>
+        </div>
+
+        <!-- Seção de Upload -->
+        <section id="upload-section" class="tab-pane active">
+            <div class="upload-grid">
+                <!-- Upload de imagem única -->
+                <div class="upload-card">
+                    <h2><i class="fas fa-image"></i> Imagem Única</h2>
+                    <form id="single-image-form" class="upload-form">
+                        <div class="preview-container" id="single-image-preview">
+                            <div class="placeholder">
+                                <i class="fas fa-image"></i>
+                                <p>Prévia da imagem</p>
+                            </div>
+                        </div>
+                        <div class="file-input-container">
+                            <label for="single-image-input" class="file-input-label">
+                                <i class="fas fa-file-image"></i>
+                                <span>Escolher imagem</span>
+                            </label>
+                            <input type="file" id="single-image-input" accept="image/*" class="file-input">
+                            <span id="single-image-name" class="file-name">Nenhum arquivo selecionado</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-upload"></i> Enviar Imagem
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Upload de múltiplas imagens -->
+                <div class="upload-card">
+                    <h2><i class="fas fa-images"></i> Múltiplas Imagens</h2>
+                    <form id="multiple-images-form" class="upload-form">
+                        <div class="preview-container" id="multiple-images-preview">
+                            <div class="placeholder">
+                                <i class="fas fa-images"></i>
+                                <p>Prévia das imagens</p>
+                            </div>
+                        </div>
+                        <div class="file-input-container">
+                            <label for="multiple-images-input" class="file-input-label">
+                                <i class="fas fa-file-image"></i>
+                                <span>Escolher imagens</span>
+                            </label>
+                            <input type="file" id="multiple-images-input" accept="image/*" multiple class="file-input">
+                            <span id="multiple-images-name" class="file-name">Nenhum arquivo selecionado</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-upload"></i> Enviar Imagens
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Upload de documento -->
+                <div class="upload-card">
+                    <h2><i class="fas fa-file-alt"></i> Documento</h2>
+                    <form id="document-form" class="upload-form">
+                        <div class="preview-container" id="document-preview">
+                            <div class="placeholder">
+                                <i class="fas fa-file-alt"></i>
+                                <p>Prévia do documento</p>
+                            </div>
+                        </div>
+                        <div class="file-input-container">
+                            <label for="document-input" class="file-input-label">
+                                <i class="fas fa-file"></i>
+                                <span>Escolher documento</span>
+                            </label>
+                            <input type="file" id="document-input" accept=".pdf,.doc,.docx,.txt" class="file-input">
+                            <span id="document-name" class="file-name">Nenhum arquivo selecionado</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-upload"></i> Enviar Documento
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Lista de Arquivos -->
+        <section id="file-list" class="tab-pane">
+            <div class="file-list-container">
+                <div class="file-list-section">
+                    <h2><i class="fas fa-images"></i> Imagens</h2>
+                    <div id="images-container" class="files-grid">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Carregando imagens...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="file-list-section">
+                    <h2><i class="fas fa-file-alt"></i> Documentos</h2>
+                    <div id="documents-container" class="documents-grid">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Carregando documentos...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Gerenciador de Arquivos - Aplicação de Exemplo</p>
+        </div>
+    </footer>
+
+    <!-- Notificação -->
+    <div id="notification" class="notification">
+        Mensagem de notificação
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
