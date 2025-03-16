@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API com Autenticação JWT</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-lock"></i> API com Autenticação JWT</h1>
+            <p>Uma API RESTful com autenticação baseada em JSON Web Tokens</p>
+        </header>
+
+        <section class="features">
+            <h2>Funcionalidades</h2>
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Registro de Usuários</h3>
+                    <p>Crie novas contas com validação de dados e senhas seguras com hash.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <h3>Autenticação</h3>
+                    <p>Login seguro com geração de tokens JWT para acesso às rotas protegidas.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Controle de Acesso</h3>
+                    <p>Diferentes níveis de permissão para usuários e administradores.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-database"></i>
+                    <h3>Persistência</h3>
+                    <p>Armazenamento de dados em banco SQLite com operações CRUD completas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-docs">
+            <h2>Endpoints da API</h2>
+            <div class="endpoint-list">
+                <div class="endpoint">
+                    <div class="method post">POST</div>
+                    <div class="path">/api/auth/register</div>
+                    <div class="description">Registrar um novo usuário</div>
+                </div>
+                <div class="endpoint">
+                    <div class="method post">POST</div>
+                    <div class="path">/api/auth/login</div>
+                    <div class="description">Autenticar usuário e obter token</div>
+                </div>
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <div class="path">/api/auth/me</div>
+                    <div class="description">Obter dados do usuário atual</div>
+                </div>
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <div class="path">/api/users</div>
+                    <div class="description">Listar todos os usuários (admin)</div>
+                </div>
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <div class="path">/api/users/:id</div>
+                    <div class="description">Obter usuário por ID</div>
+                </div>
+                <div class="endpoint">
+                    <div class="method put">PUT</div>
+                    <div class="path">/api/users/:id</div>
+                    <div class="description">Atualizar usuário</div>
+                </div>
+                <div class="endpoint">
+                    <div class="method delete">DELETE</div>
+                    <div class="path">/api/users/:id</div>
+                    <div class="description">Excluir usuário</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="usage">
+            <h2>Como Usar</h2>
+            <div class="code-example">
+                <h3>Exemplo de Registro</h3>
+                <pre><code>fetch('/api/auth/register', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    name: 'Usuário Teste',
+    email: 'usuario@teste.com',
+    password: 'Senha123'
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));</code></pre>
+            </div>
+            <div class="code-example">
+                <h3>Exemplo de Login</h3>
+                <pre><code>fetch('/api/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    email: 'usuario@teste.com',
+    password: 'Senha123'
+  })
+})
+.then(res => res.json())
+.then(data => {
+  // Armazenar o token
+  localStorage.setItem('token', data.token);
+  console.log(data);
+});</code></pre>
+            </div>
+            <div class="code-example">
+                <h3>Acessando Rota Protegida</h3>
+                <pre><code>const token = localStorage.getItem('token');
+
+fetch('/api/auth/me', {
+  method: 'GET',
+  headers: { 
+    'Authorization': `Bearer ${token}` 
+  }
+})
+.then(res => res.json())
+.then(data => console.log(data));</code></pre>
+            </div>
+        </section>
+
+        <footer>
+            <p>Desenvolvido como parte do projeto de aprendizado de backend com Node.js</p>
+            <p>Tecnologias: Node.js, Express, JWT, SQLite, bcrypt</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+/* Variáveis CSS */
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --text-light: #666;
+    --light-color: #f8f9fa;
+    --border-color: #ddd;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Reset e estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Seções */
+section {
+    margin-bottom: 50px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+/* Cards de funcionalidades */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.card p {
+    color: var(--text-light);
+}
+
+/* Lista de endpoints */
+.endpoint-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.endpoint {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.method {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+    color: white;
+}
+
+.method.get {
+    background-color: var(--primary-color);
+}
+
+.method.post {
+    background-color: var(--success-color);
+}
+
+.method.put {
+    background-color: var(--warning-color);
+}
+
+.method.delete {
+    background-color: var(--danger-color);
+}
+
+.path {
+    font-family: monospace;
+    font-size: 1rem;
+    padding-left: 15px;
+}
+
+/* Exemplos de código */
+.code-example {
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.code-example h3 {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+pre {
+    background-color: #282c34;
+    color: #abb2bf;
+    padding: 20px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5;
+}
+
+code {
+    font-size: 0.9rem;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .endpoint {
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .description {
+        grid-column: 1 / -1;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+
+    .card i {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 30px 15px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
